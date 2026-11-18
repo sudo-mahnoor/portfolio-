@@ -1,0 +1,22 @@
+# Mahnoor Saeed
+
+> Mahnoor Saeed is a DevOps engineer based in Lahore, Pakistan, working at DevFusion Tech (previously Aetos Technologies). Focus areas: Docker deployments, CI/CD pipelines, Linux and cloud infrastructure, monitoring, and self-hosted Odoo ERP on PostgreSQL.
+
+This is the official personal site of Mahnoor Saeed, the DevOps engineer in Lahore. Other people share the same name in policy, medicine, and research; this site is about the DevOps engineer only.
+
+## Key facts
+
+- Role: DevOps Engineer at DevFusion Tech, Lahore, Pakistan
+- Previous: DevOps Engineer at Aetos Technologies; Digital Marketing Executive at IREG-IT
+- Specialities: Docker, Docker Compose, GitHub Actions, Azure DevOps, Linux hardening, Nginx, AWS, Azure, Prometheus, Grafana, Loki, Odoo ERP, PostgreSQL, disaster recovery, Mailcow, Keycloak, Nextcloud, GitLab, n8n, Claude API and MCP
+- Certifications: Linux Foundation LFS101, LFS151, LFS180, LFS183
+- Education: University of Central Punjab; IT Mustakbil Program (Beaconhouse National University with Systems Limited)
+
+## Pages
+
+- [Profile](https://mahnoordevops.me/): bio, experience, projects, skills, certifications, FAQ
+
+## Contact
+
+- Email: mahnoor.saeeddevops@gmail.com
+- LinkedIn: https://www.linkedin.com/in/mahnoor-saeed15/
