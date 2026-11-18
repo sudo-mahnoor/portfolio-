@@ -20,3 +20,4 @@ This is the official personal site of Mahnoor Saeed, the DevOps engineer in Laho
 
 - Email: mahnoor.saeeddevops@gmail.com
 - LinkedIn: https://www.linkedin.com/in/mahnoor-saeed15/
+- GitHub: https://github.com/sudo-mahnoor
