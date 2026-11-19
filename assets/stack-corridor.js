@@ -48,7 +48,7 @@
      ROWS high, columns running down the corridor. The tool list repeats until the walls
      are long enough to loop without a gap. */
   var ROWS = 3, GAP = 14, SPEED = 90; /* px per second */
-  var tiles = [], span = 0, NEAR = 0, X = 0, TW = 250, TH = 124;
+  var tiles = [], span = 0, NEAR = 0, X = 0, TW = 250, TH = 124, F0 = 0.6, F1 = 0.33;
 
   function build() {
     var w = root.clientWidth, h = root.clientHeight, small = w < 640;
@@ -59,7 +59,8 @@
     var cols = Math.ceil((small ? 3000 : 4200) / step);
     span = cols * step;
     NEAR = small ? 380 : 520;
-    X = Math.max(small ? 120 : 280, w * (small ? 0.33 : 0.34));
+    F0 = small ? 0.42 : 0.6; F1 = small ? 0.2 : 0.33;   /* where tiles fade out / are fully shown */
+    X = Math.max(small ? 150 : 280, w * (small ? 0.41 : 0.34));
     view.style.perspective = (small ? 520 : 760) + 'px';
     var k = 0;
     for (var c = 0; c < cols; c++) {
@@ -82,8 +83,9 @@
     tiles.forEach(function (t) {
       /* z runs from -far (deep in the corridor) to NEAR (passing the viewer), then wraps */
       var z = (t.base + offset) % span - far;
-      var depth = (z + far) / span;                       /* 0 far .. 1 near */
-      var fade = Math.min(1, depth * 3) * Math.min(1, (NEAR - z) / 240);
+      /* tiles stay invisible deep in the corridor, so nothing sits behind the heading */
+      var zZero = -far * F0, zFull = -far * F1;
+      var fade = Math.max(0, Math.min(1, (z - zZero) / (zFull - zZero))) * Math.min(1, (NEAR - z) / 240);
       t.el.style.opacity = fade.toFixed(3);
       t.el.style.transform = 'translate3d(' + (t.side * X) + 'px,' + t.y.toFixed(1) + 'px,' + z.toFixed(1) + 'px) rotateY(' + (t.side * -90) + 'deg)';
     });
