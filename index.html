@@ -230,7 +230,7 @@ button{font:inherit;color:inherit}
 .hero{padding-top:3rem;padding-bottom:4rem}
 h1{font:800 clamp(3.4rem,13.5vw,10.5rem)/.88 var(--display);font-stretch:75%;letter-spacing:-.015em;margin:0 0 1.25rem}
 .role{font:600 clamp(1.25rem,2.6vw,1.75rem)/1.2 var(--display);margin:0 0 2rem;padding-bottom:1rem;border-bottom:4px solid var(--marigold);display:inline-block}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:3rem;align-items:start}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:3rem;align-items:center}
 .lede{font-size:1.1875rem;margin:0 0 1rem;max-width:34rem}
 .tagline{font:600 1.375rem/1.25 var(--display);margin:0 0 1.75rem}
 .actions{display:flex;flex-wrap:wrap;gap:.625rem}
@@ -267,9 +267,9 @@ li[data-state="passed"] .dot::after{content:"\2713";font-weight:700}
 .runner{margin-top:1rem}
 .no-js .runner{display:none}
 .log{font:.8125rem/1.55 var(--mono);background:#040D10;border-radius:.5rem;padding:.75rem .875rem;min-height:11.6em;color:var(--console-muted);overflow-x:auto}
-.log p{margin:0;white-space:pre}
+.log p{margin:0;white-space:pre-wrap;padding-left:11ch;text-indent:-11ch}
 .log .ok{color:#4FD1A0}
-.log .done{color:var(--console-text);white-space:normal;margin-top:.4em;font-family:var(--body);font-size:.9375rem}
+.log .done{color:var(--console-text);white-space:normal;padding-left:0;text-indent:0;margin-top:.4em;font-family:var(--body);font-size:.9375rem}
 .run{margin-top:.875rem;background:var(--marigold);border:0;border-radius:.5rem;padding:.65rem 1.1rem;font-weight:700;color:#0E2A33;cursor:pointer}
 .run:hover{background:#FFC53A}
 .run[disabled]{opacity:.55;cursor:default}
