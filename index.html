@@ -226,34 +226,66 @@ li[data-state="passed"] .dot::after{content:"\2713";font-weight:700}
 .band li{margin-bottom:.45rem}
 .band li::marker{color:var(--marigold)}
 
+/* projects as case studies */
+.band-wide .wrap{display:block}
+.band-wide h2{margin-bottom:.5rem}
+.band .intro{color:var(--muted);max-width:40rem;margin:0 0 1.5rem}
+.folders{display:flex;flex-wrap:wrap;gap:.5rem 28px;justify-content:center;margin:0 0 1rem;min-height:17rem}
+.picker{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem 1rem;margin:0 0 1.5rem;min-height:2.6rem}
+.no-js .picker{display:none}
+.band .count{color:var(--muted);font-size:.9688rem;margin:0}
+.show-all{padding:.35rem .9rem;font-size:.9375rem}
+.project{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:1.5rem 2.5rem;background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--marigold);border-radius:.5rem;padding:1.75rem 2rem;margin-bottom:1.25rem}
+.project:focus{outline:none}
+.project:focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
+.band .project h3{font-size:clamp(1.375rem,2.4vw,1.75rem);line-height:1.15;margin:0 0 .6rem}
+.band .project .brief{font:600 1.125rem/1.35 var(--display);margin:0 0 .75rem}
+.band .project p{max-width:36rem}
+.band .tools{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;padding:0;margin:1rem 0 0}
+.band .tools li{margin:0;border:1.5px solid var(--line);border-radius:999px;padding:.15rem .7rem;font-size:.875rem;font-weight:600}
+.flow-box{background:var(--paper);border-radius:.5rem;padding:1.25rem 1.25rem .5rem}
+.band .flow-title{font:700 .9375rem/1.2 var(--display);margin:0 0 1rem;color:var(--muted)}
+.band .flow{list-style:none;margin:0;padding:0}
+.band .flow li{position:relative;margin:0;padding:0 0 1.15rem 2rem;font-weight:600;font-size:.9688rem;line-height:1.35}
+.flow li::before{content:"";position:absolute;left:0;top:.2rem;width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);background:var(--paper);z-index:1}
+.flow li::after{content:"";position:absolute;left:6px;top:.2rem;bottom:-.2rem;width:2px;background:linear-gradient(180deg,var(--line) 0 40%,var(--marigold) 40% 60%,var(--line) 60% 100%);background-size:100% 300%;animation:flow 2.4s linear infinite}
+.band .flow li:last-child{padding-bottom:.75rem}
+.flow li:last-child::after{display:none}
+.flow li:last-child::before{background:var(--marigold);border-color:var(--marigold)}
+.flow li:nth-child(2)::after{animation-delay:-.4s}
+.flow li:nth-child(3)::after{animation-delay:-.8s}
+.flow li:nth-child(4)::after{animation-delay:-1.2s}
+@keyframes flow{from{background-position:0 100%}to{background-position:0 0}}
+
+/* the stack */
+.stack{display:grid;gap:.5rem}
+.layer{display:grid;grid-template-columns:13rem minmax(0,1fr);gap:.5rem 1.5rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--ink);border-radius:.375rem;padding:.9rem 1.25rem;transition:transform .25s ease,border-color .25s ease}
+.layer:hover{transform:translateX(.5rem);border-left-color:var(--marigold)}
+.band .layer h3{font-size:1.0625rem;margin:0}
+.band .chips{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;padding:0;margin:0;max-width:none}
+.band .chips li{margin:0;background:var(--paper);border-radius:.3rem;padding:.2rem .6rem;font-size:.9375rem}
+
 /* experience */
 .job{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:.5rem 1.5rem;padding:1.5rem 0;border-top:1px solid var(--line)}
 .job:first-child{border-top:0;padding-top:0}
 .when{font:600 1rem/1.4 var(--display);font-variant-numeric:tabular-nums}
-.where{color:var(--muted);margin:0 0 .75rem;font-size:.9688rem}
+.where{color:var(--muted);margin:0 0 .5rem;font-size:.9688rem}
+.job details{margin-top:.25rem}
+.job summary{font-weight:600;cursor:pointer;text-decoration:underline;text-decoration-color:var(--marigold);text-decoration-thickness:2px;text-underline-offset:4px}
+.job details ul{margin-top:.75rem}
 
-/* projects */
-.folders{display:flex;flex-wrap:wrap;gap:.5rem 28px;justify-content:flex-start;margin:0 0 1.25rem;min-height:17rem}
-.picker{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;margin:0 0 1rem;min-height:2.6rem}
-.no-js .picker{display:none}
-.band .count{color:var(--muted);font-size:.9688rem;margin:0}
-.show-all{padding:.35rem .9rem;font-size:.9375rem}
-.project:focus{outline:none}
-.project:focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
-.project{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--marigold);border-radius:.375rem;padding:1.25rem 1.5rem;margin-bottom:.875rem}
-.project p{margin:0}
-.project .tools{color:var(--muted);font-size:.9375rem;margin:0 0 .6rem}
-
-/* skills */
-.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 2.5rem;margin:0}
-.skills dt{font:700 1.0625rem/1.3 var(--display);padding-top:.75rem;border-top:2px solid var(--ink)}
-.skills dd{margin:.35rem 0 0;color:var(--muted)}
+/* certifications */
+.band .certs{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;padding:0;margin:0 0 1.5rem;max-width:none}
+.band .certs li{margin:0;background:var(--console);color:var(--console-text);border-radius:.5rem;padding:1rem 1.1rem}
+.cert-code{display:block;font:800 1.5rem/1 var(--display);font-stretch:85%;color:var(--marigold);margin-bottom:.4rem}
+.cert-name{display:block;font-weight:600;line-height:1.3}
+.cert-by{display:block;color:var(--console-muted);font-size:.875rem;margin-top:.2rem}
 
 /* faq */
-details{border-bottom:1px solid var(--line);padding:.95rem 0}
-details:first-of-type{border-top:1px solid var(--line)}
-summary{font-weight:600;cursor:pointer}
-details p{margin:.6rem 0 0}
+#faq details{border-bottom:1px solid var(--line);padding:.95rem 0}
+#faq details:first-of-type{border-top:1px solid var(--line)}
+#faq summary{font-weight:600;cursor:pointer}
+#faq details p{margin:.6rem 0 0}
 
 /* contact */
 .mail{font:700 clamp(1.25rem,3.4vw,2rem)/1.2 var(--display);word-break:break-word}
@@ -269,7 +301,8 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
   .band-grid{grid-template-columns:minmax(0,1fr)}
   .nav{display:none}
   body{padding-bottom:4.5rem}
-  .folders{justify-content:center}
+  .project{grid-template-columns:minmax(0,1fr);padding:1.25rem 1.25rem}
+  .layer{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:560px){
   .hero{padding-top:2rem;padding-bottom:3rem}
@@ -278,12 +311,14 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
   .js .stage-desc{grid-row:3;min-height:6.4em}
   .js .stages li:nth-child(4) .stage::before{display:none}
   .job{grid-template-columns:minmax(0,1fr)}
-  .skills{grid-template-columns:minmax(0,1fr)}
-  .project{padding:1rem 1.1rem}
+  .band .certs{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   li[data-state="running"] .dot{animation:none}
+  .flow li::after{animation:none;background:var(--line)}
+  .layer{transition:none}
+  .layer:hover{transform:none}
 }
 </style>
 </head>
@@ -295,10 +330,10 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
     <a class="brand" href="/">Mahnoor Saeed</a>
     <nav class="nav" aria-label="Sections">
       <a href="#top" data-icon="home" data-fx="glow">Home</a>
-      <a href="#about" data-icon="user" data-fx="wave">About</a>
+      <a href="#projects" data-icon="folder">Work</a>
+      <a href="#skills" data-icon="layers" data-fx="spin">Stack</a>
       <a href="#work" data-icon="work">Experience</a>
-      <a href="#projects" data-icon="folder">Projects</a>
-      <a href="#skills" data-icon="layers" data-fx="spin">Skills</a>
+      <a href="#about" data-icon="user" data-fx="wave">About</a>
       <a href="#contact" data-icon="mail">Contact</a>
     </nav>
     <button class="theme" type="button" id="theme">Dark</button>
@@ -362,13 +397,143 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
     </div>
   </div>
 
-  <section class="band" id="about">
+  <section class="band band-wide" id="projects">
+    <div class="wrap">
+      <h2>DevOps projects</h2>
+      <p class="intro">Six pieces of work, each with the job it had to do and how it runs. Open a folder to pick one.</p>
+      <div class="folders" id="folders" hidden></div>
+      <div class="picker">
+        <p class="count" id="count" aria-live="polite"></p>
+        <button class="btn show-all" type="button" id="show-all" hidden>Show all projects</button>
+      </div>
+
+      <article class="project" data-folder="Odoo and databases" data-art="odoo" data-short="Odoo migration" data-meta="Odoo 19">
+        <div>
+          <h3>Odoo infrastructure migration with no downtime</h3>
+          <p class="brief">A live ERP had to change its architecture without stopping the business.</p>
+          <p>Migrated Odoo ERP from a container-based to a service-based architecture across hosting environments. The work included schema migration, backup validation, and a production cutover with no downtime.</p>
+          <ul class="tools" aria-label="Tools used"><li>Odoo 19</li><li>Docker</li><li>PostgreSQL</li><li>Linux services</li></ul>
+        </div>
+        <div class="flow-box">
+          <p class="flow-title">How the move went</p>
+          <ol class="flow">
+              <li>Odoo running in Docker</li>
+              <li>Backups validated</li>
+              <li>Schema migrated</li>
+              <li>Production cutover</li>
+              <li>Odoo running as services</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="project" data-folder="Odoo and databases" data-art="odoo" data-short="Disaster recovery" data-meta="PostgreSQL">
+        <div>
+          <h3>Disaster recovery framework for Odoo and PostgreSQL</h3>
+          <p class="brief">ERP data has to come back quickly after a failure.</p>
+          <p>Designed a disaster recovery strategy with scheduled automated backups, documented restore procedures, and regular failover testing, to cut recovery time for critical ERP data.</p>
+          <ul class="tools" aria-label="Tools used"><li>PostgreSQL</li><li>Bash</li><li>Cron</li><li>Backup automation</li></ul>
+        </div>
+        <div class="flow-box">
+          <p class="flow-title">How recovery is kept ready</p>
+          <ol class="flow">
+              <li>Cron starts the backup</li>
+              <li>PostgreSQL backup taken</li>
+              <li>Restore tested</li>
+              <li>Failover drill</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="project" data-folder="Monitoring and mail" data-art="watch" data-short="Observability" data-meta="Prometheus">
+        <div>
+          <h3>Full-stack observability platform</h3>
+          <p class="brief">The team should see a problem before the customer does.</p>
+          <p>Deployed monitoring and alerting that covers SSL expiry, disk and memory thresholds, container health, and service uptime, so the team sees problems across production workloads early.</p>
+          <ul class="tools" aria-label="Tools used"><li>Prometheus</li><li>Grafana</li><li>Loki</li><li>cAdvisor</li><li>Promtail</li><li>Uptime Kuma</li></ul>
+        </div>
+        <div class="flow-box">
+          <p class="flow-title">How a problem reaches the team</p>
+          <ol class="flow">
+              <li>Servers and containers report metrics</li>
+              <li>Prometheus collects them</li>
+              <li>Grafana shows dashboards</li>
+              <li>Alert rules fire</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="project" data-folder="AI automation" data-art="ai" data-short="Claude MCP assistant" data-meta="Telegram">
+        <div>
+          <h3>Claude MCP infrastructure assistant</h3>
+          <p class="brief">Check and run servers from a phone, by chat.</p>
+          <p>Configured Claude as an MCP server with internal infrastructure context and connected it to Telegram, giving real-time alerts and conversational server administration from a phone.</p>
+          <ul class="tools" aria-label="Tools used"><li>Claude MCP</li><li>Telegram Bot API</li><li>Linux</li></ul>
+        </div>
+        <div class="flow-box">
+          <p class="flow-title">How a question gets answered</p>
+          <ol class="flow">
+              <li>Message sent in Telegram</li>
+              <li>Claude MCP server reads it</li>
+              <li>Infrastructure context checked</li>
+              <li>Answer or alert on the phone</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="project" data-folder="AI automation" data-art="ai" data-short="SEO content pipeline" data-meta="n8n">
+        <div>
+          <h3>AI-powered SEO content pipeline</h3>
+          <p class="brief">Publish SEO articles with no manual steps.</p>
+          <p>Built an end-to-end workflow that reads keywords from Google Sheets, writes articles with the Claude API, generates images with Gemini, publishes to WordPress, and writes the post metadata back to the sheet without manual steps.</p>
+          <ul class="tools" aria-label="Tools used"><li>n8n</li><li>Claude API</li><li>Google Gemini</li><li>WordPress</li><li>Google Sheets</li></ul>
+        </div>
+        <div class="flow-box">
+          <p class="flow-title">How an article gets published</p>
+          <ol class="flow">
+              <li>Keyword read from Google Sheets</li>
+              <li>Claude API writes the article</li>
+              <li>Gemini makes the image</li>
+              <li>WordPress publishes it</li>
+              <li>Sheet updated with the post</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="project" data-folder="Monitoring and mail" data-art="watch" data-short="Mail server" data-meta="Mailcow">
+        <div>
+          <h3>Enterprise mail server deployment</h3>
+          <p class="brief">A production mail server, set up securely from DNS to SSL.</p>
+          <p>Deployed and hardened a production Mailcow mail server with full DNS, SSL, and security configuration.</p>
+          <ul class="tools" aria-label="Tools used"><li>Mailcow</li><li>DNS</li><li>SSL</li><li>Security hardening</li></ul>
+        </div>
+        <div class="flow-box">
+          <p class="flow-title">How it was built</p>
+          <ol class="flow">
+              <li>DNS records set</li>
+              <li>Mailcow deployed</li>
+              <li>SSL certificates issued</li>
+              <li>Security hardened</li>
+          </ol>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="band" id="skills">
     <div class="wrap band-grid">
-      <h2>About Mahnoor Saeed</h2>
       <div>
-        <p>I work on the part of software that people only notice when it breaks: deployments, servers, backups, and alerts. My job is to make sure they do not break, and that when something does go wrong, the team knows before the customer does.</p>
-        <p>Most of my work is on self-hosted, open-source infrastructure. I have deployed and run mail servers, identity and password management, Git hosting, file sharing, and monitoring stacks on production Linux servers. I also run Odoo ERP end to end: deployment, PostgreSQL tuning, automated backups, restore testing, and version upgrades.</p>
-        <p>I came to DevOps from digital marketing, so I care about explaining infrastructure in plain language and about automation that saves real hours, including AI-driven workflows built with n8n and the Claude API.</p>
+        <h2>The stack I run</h2>
+        <p class="intro">Skills, from the automation on top down to the servers underneath.</p>
+      </div>
+      <div class="stack">
+        <div class="layer"><h3>Automation and AI</h3><ul class="chips"><li>n8n</li><li>Claude API and MCP servers</li><li>Telegram Bot API</li><li>Google Gemini</li><li>WordPress</li><li>Google Sheets API</li></ul></div>
+        <div class="layer"><h3>ERP and databases</h3><ul class="chips"><li>Odoo, self-hosted</li><li>Odoo in Docker and as services</li><li>PostgreSQL administration</li><li>Backups</li><li>Performance tuning</li><li>Disaster recovery</li></ul></div>
+        <div class="layer"><h3>Open-source tools</h3><ul class="chips"><li>GitLab</li><li>Keycloak</li><li>MinIO</li><li>Passbolt</li><li>Nextcloud</li><li>Mailcow</li></ul></div>
+        <div class="layer"><h3>CI/CD</h3><ul class="chips"><li>GitHub Actions</li><li>Azure DevOps</li><li>Infrastructure automation</li></ul></div>
+        <div class="layer"><h3>Monitoring and alerting</h3><ul class="chips"><li>Prometheus</li><li>Grafana</li><li>Loki</li><li>Uptime Kuma</li><li>Node-Exporter</li><li>cAdvisor</li><li>Promtail</li></ul></div>
+        <div class="layer"><h3>Security</h3><ul class="chips"><li>SSH hardening</li><li>SSL/TLS with Let's Encrypt</li><li>Zero Trust fundamentals</li><li>DevSecOps</li></ul></div>
+        <div class="layer"><h3>Infrastructure</h3><ul class="chips"><li>Linux (Ubuntu) administration</li><li>Docker</li><li>Docker Compose</li><li>Nginx</li></ul></div>
+        <div class="layer"><h3>Cloud and identity</h3><ul class="chips"><li>AWS: S3, IAM, RDS, ECR, WAF, ACM, Bedrock, Lightsail</li><li>Microsoft Azure</li><li>Microsoft Entra ID</li><li>Microsoft 365</li></ul></div>
       </div>
     </div>
   </section>
@@ -382,13 +547,17 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
           <div>
             <h3>DevOps Engineer, DevFusion Tech</h3>
             <p class="where">Lahore, Pakistan</p>
-            <ul>
+            <p>I keep the company's containerized applications, pipelines, servers and cloud accounts running.</p>
+            <details>
+              <summary>What I do there</summary>
+              <ul>
               <li>Deploy and maintain containerized applications with Docker and Docker Compose across staging and production.</li>
               <li>Monitor infrastructure health with Prometheus and Grafana, including alert rules and dashboards.</li>
               <li>Maintain CI/CD pipelines in GitHub Actions for automated build, test, and deployment.</li>
               <li>Administer Linux servers: patching, hardening, and troubleshooting production systems.</li>
               <li>Manage cloud resources on AWS and Azure, covering access control, provisioning, and cost monitoring.</li>
-            </ul>
+              </ul>
+            </details>
           </div>
         </div>
 
@@ -397,7 +566,10 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
           <div>
             <h3>DevOps Engineer, Aetos Technologies</h3>
             <p class="where">Lahore, Pakistan</p>
-            <ul>
+            <p>I built the monitoring, mail, identity and Odoo infrastructure, and the backup and recovery plan behind it.</p>
+            <details>
+              <summary>What I did there</summary>
+              <ul>
               <li>Deployed a full monitoring and alerting stack: Prometheus, Grafana, Node-Exporter, Loki, cAdvisor, Promtail, and Uptime Kuma, with alerts for SSL expiry, disk, memory, container health, and uptime.</li>
               <li>Configured and hardened a production Mailcow mail server, including DNS and SSL.</li>
               <li>Deployed and administered self-hosted Odoo ERP, and migrated it from a container-based to a service-based architecture.</li>
@@ -406,7 +578,8 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
               <li>Deployed an identity and security stack: Passbolt, Keycloak, MinIO, self-hosted GitLab, and Nextcloud.</li>
               <li>Built CI/CD pipelines with GitHub Actions and Azure DevOps, behind Nginx reverse proxies with Let's Encrypt SSL.</li>
               <li>Managed AWS services (S3, IAM, RDS, ECR, WAF, ACM, Bedrock, Lightsail), Microsoft Entra ID, and Microsoft 365.</li>
-            </ul>
+              </ul>
+            </details>
           </div>
         </div>
 
@@ -415,97 +588,40 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
           <div>
             <h3>Digital Marketing Executive, IREG-IT</h3>
             <p class="where">Lahore, Pakistan</p>
+            <p>My start in digital marketing, before I moved to DevOps.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band" id="projects">
+  <section class="band" id="credentials">
     <div class="wrap band-grid">
-      <h2>DevOps projects</h2>
+      <h2>Certifications and education</h2>
       <div>
-        <div class="folders" id="folders" hidden></div>
-        <div class="picker">
-          <p class="count" id="count" aria-live="polite"></p>
-          <button class="btn show-all" type="button" id="show-all" hidden>Show all projects</button>
-        </div>
-
-        <article class="project" data-folder="Odoo and databases" data-art="odoo" data-short="Odoo migration" data-meta="Odoo 19">
-          <h3>Odoo infrastructure migration with no downtime</h3>
-          <p class="tools">Odoo 19, Docker, PostgreSQL, Linux services</p>
-          <p>Migrated Odoo ERP from a container-based to a service-based architecture across hosting environments. The work included schema migration, backup validation, and a production cutover with no downtime.</p>
-        </article>
-
-        <article class="project" data-folder="Odoo and databases" data-art="odoo" data-short="Disaster recovery" data-meta="PostgreSQL">
-          <h3>Disaster recovery framework for Odoo and PostgreSQL</h3>
-          <p class="tools">PostgreSQL, Bash, Cron, backup automation</p>
-          <p>Designed a disaster recovery strategy with scheduled automated backups, documented restore procedures, and regular failover testing, to cut recovery time for critical ERP data.</p>
-        </article>
-
-        <article class="project" data-folder="Monitoring and mail" data-art="watch" data-short="Observability" data-meta="Prometheus">
-          <h3>Full-stack observability platform</h3>
-          <p class="tools">Prometheus, Grafana, Loki, cAdvisor, Promtail, Uptime Kuma</p>
-          <p>Deployed monitoring and alerting that covers SSL expiry, disk and memory thresholds, container health, and service uptime, so the team sees problems across production workloads early.</p>
-        </article>
-
-        <article class="project" data-folder="AI automation" data-art="ai" data-short="Claude MCP assistant" data-meta="Telegram">
-          <h3>Claude MCP infrastructure assistant</h3>
-          <p class="tools">Claude MCP, Telegram Bot API, Linux</p>
-          <p>Configured Claude as an MCP server with internal infrastructure context and connected it to Telegram, giving real-time alerts and conversational server administration from a phone.</p>
-        </article>
-
-        <article class="project" data-folder="AI automation" data-art="ai" data-short="SEO content pipeline" data-meta="n8n">
-          <h3>AI-powered SEO content pipeline</h3>
-          <p class="tools">n8n, Claude API, Google Gemini, WordPress, Google Sheets</p>
-          <p>Built an end-to-end workflow that reads keywords from Google Sheets, writes articles with the Claude API, generates images with Gemini, publishes to WordPress, and writes the post metadata back to the sheet without manual steps.</p>
-        </article>
-
-        <article class="project" data-folder="Monitoring and mail" data-art="watch" data-short="Mail server" data-meta="Mailcow">
-          <h3>Enterprise mail server deployment</h3>
-          <p class="tools">Mailcow, DNS, SSL, security hardening</p>
-          <p>Deployed and hardened a production Mailcow mail server with full DNS, SSL, and security configuration.</p>
-        </article>
+        <ul class="certs">
+          <li><span class="cert-code">LFS101</span><span class="cert-name">Introduction to Linux</span><span class="cert-by">The Linux Foundation</span></li>
+          <li><span class="cert-code">LFS151</span><span class="cert-name">Introduction to Cloud Infrastructure Technologies</span><span class="cert-by">The Linux Foundation</span></li>
+          <li><span class="cert-code">LFS180</span><span class="cert-name">Introduction to DevSecOps for Managers</span><span class="cert-by">The Linux Foundation</span></li>
+          <li><span class="cert-code">LFS183</span><span class="cert-name">Introduction to Zero Trust</span><span class="cert-by">The Linux Foundation</span></li>
+        </ul>
+        <ul>
+          <li>Getting Started with Azure Cloud</li>
+          <li>IT Mustakbil Program, DevOps specialization: Beaconhouse National University with Systems Limited</li>
+          <li>Bachelor of Science (Hons), University of Central Punjab</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="band" id="skills">
+  <section class="band" id="about">
     <div class="wrap band-grid">
-      <h2>Skills</h2>
-      <dl class="skills">
-        <div><dt>Infrastructure</dt>
-        <dd>Linux (Ubuntu) administration, Docker, Docker Compose, Nginx</dd></div>
-        <div><dt>CI/CD</dt>
-        <dd>GitHub Actions, Azure DevOps, infrastructure automation</dd></div>
-        <div><dt>ERP and databases</dt>
-        <dd>Odoo (self-hosted, Docker and service-based), PostgreSQL administration, backups, performance tuning, disaster recovery</dd></div>
-        <div><dt>Cloud and identity</dt>
-        <dd>AWS (S3, IAM, RDS, ECR, WAF, ACM, Bedrock, Lightsail), Microsoft Azure, Microsoft Entra ID, Microsoft 365</dd></div>
-        <div><dt>Monitoring and alerting</dt>
-        <dd>Prometheus, Grafana, Loki, Uptime Kuma, Node-Exporter, cAdvisor, Promtail</dd></div>
-        <div><dt>Security</dt>
-        <dd>SSH hardening, SSL/TLS with Let's Encrypt, Zero Trust fundamentals, DevSecOps</dd></div>
-        <div><dt>Open-source tools</dt>
-        <dd>GitLab, Keycloak, MinIO, Passbolt, Nextcloud, Mailcow</dd></div>
-        <div><dt>Automation and AI</dt>
-        <dd>n8n, Claude API and MCP servers, Telegram Bot API, Google Gemini, WordPress, Google Sheets API</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="band" id="credentials">
-    <div class="wrap band-grid">
-      <h2>Certifications and education</h2>
-      <ul>
-        <li>LFS101: Introduction to Linux (The Linux Foundation)</li>
-        <li>LFS151: Introduction to Cloud Infrastructure Technologies (The Linux Foundation)</li>
-        <li>LFS180: Introduction to DevSecOps for Managers (The Linux Foundation)</li>
-        <li>LFS183: Introduction to Zero Trust (The Linux Foundation)</li>
-        <li>Getting Started with Azure Cloud</li>
-        <li>IT Mustakbil Program, DevOps specialization: Beaconhouse National University with Systems Limited</li>
-        <li>Bachelor of Science (Hons), University of Central Punjab</li>
-      </ul>
+      <h2>About Mahnoor Saeed</h2>
+      <div>
+        <p>I work on the part of software that people only notice when it breaks: deployments, servers, backups, and alerts. My job is to make sure they do not break, and that when something does go wrong, the team knows before the customer does.</p>
+        <p>Most of my work is on self-hosted, open-source infrastructure. I have deployed and run mail servers, identity and password management, Git hosting, file sharing, and monitoring stacks on production Linux servers. I also run Odoo ERP end to end: deployment, PostgreSQL tuning, automated backups, restore testing, and version upgrades.</p>
+        <p>I came to DevOps from digital marketing, so I care about explaining infrastructure in plain language and about automation that saves real hours, including AI-driven workflows built with n8n and the Claude API.</p>
+      </div>
     </div>
   </section>
 

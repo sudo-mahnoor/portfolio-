@@ -405,17 +405,26 @@
   }
 
   /* the active drop follows the section on screen */
-  if ('IntersectionObserver' in window) {
-    var byId = {};
-    itemEls.forEach(function (el, i) { byId[(el.getAttribute('href') || '').slice(1)] = i; });
-    var io = new IntersectionObserver(function (entries) {
-      if (performance.now() < clickLock) return;
-      entries.forEach(function (e) {
-        if (e.isIntersecting && byId[e.target.id] !== undefined) setActive(byId[e.target.id]);
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    Object.keys(byId).forEach(function (id) { var sec = document.getElementById(id); if (sec) io.observe(sec); });
+  var spied = [];
+  itemEls.forEach(function (el, i) {
+    var sec = document.getElementById((el.getAttribute('href') || '').slice(1));
+    if (sec) spied.push({ i: i, sec: sec });
+  });
+  var spyRaf = 0;
+  function spy() {
+    spyRaf = 0;
+    if (performance.now() < clickLock) { spyRaf = requestAnimationFrame(spy); return; }
+    var mid = window.innerHeight * 0.45, best = spied.length ? spied[0].i : 0, bestTop = -Infinity;
+    spied.forEach(function (o) {
+      var top = o.sec.getBoundingClientRect().top;
+      if (top <= mid && top > bestTop) { bestTop = top; best = o.i; }
+    });
+    if (spied.length && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) best = spied[spied.length - 1].i;
+    setActive(best);
   }
+  function queueSpy() { if (!spyRaf) spyRaf = requestAnimationFrame(spy); }
+  window.addEventListener('scroll', queueSpy, { passive: true });
+  window.addEventListener('resize', queueSpy);
 
   measure();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { s.ready = false; measure(); });
