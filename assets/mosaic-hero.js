@@ -158,11 +158,11 @@
     '  float h = hash(id); L *= 0.8 + 0.28 * sin(uTime * (0.5 + h * 1.4) + h * 40.0);',
     '  L = clamp(L, 0.0, 1.0); L = floor(L * 8.0 + h * 0.6) / 8.0;',
     '  vec2 q = abs(f - 0.5); float tile = smoothstep(0.47, 0.41, max(q.x, q.y));',
-    '  vec3 cool = vec3(0.50, 0.70, 0.74); vec3 warm = vec3(0.96, 0.86, 0.66);',
+    '  vec3 cool = vec3(0.56, 0.53, 0.88); vec3 warm = vec3(1.00, 0.66, 0.56);',
     '  vec3 col = mix(cool, warm, smoothstep(0.25, 0.75, n)) * L * 0.6;',
     '  col = mix(col, uAccent * L * 0.75, 0.2 * L);',
     '  col *= tile * (0.82 + 0.36 * f.y);',
-    '  return col + vec3(0.008, 0.016, 0.018);',
+    '  return col + vec3(0.012, 0.010, 0.032);',
     '}',
     'void main(){',
     '  vec2 frag = gl_FragCoord.xy; vec3 col = mosaic(frag);',
@@ -203,7 +203,7 @@
       ptr: gl.getUniformLocation(prog, 'uPtr'), ptrOn: gl.getUniformLocation(prog, 'uPtrOn'),
       accent: gl.getUniformLocation(prog, 'uAccent')
     };
-    gl.uniform3f(U.accent, 1.0, 0.70, 0.12); // marigold
+    gl.uniform3f(U.accent, 1.0, 0.42, 0.29); // coral
     hero.setAttribute('data-sky', 'webgl');
 
     var w = 0, h = 0;

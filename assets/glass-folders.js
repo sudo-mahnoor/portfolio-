@@ -198,11 +198,11 @@
     pump();
   }
 
-  /* artwork in the site's own colours: deep teal ink, marigold, signal green */
+  /* artwork in the site's own colours: deep indigo ink, coral, signal green */
   var ART = {
-    odoo: { style: 'marble', colors: ['#071419', '#0E2A33', '#1E5A63', '#0B1D23', '#C98A00', '#F2A900', '#FFE9A8'], scale: 0.66, warp: 3.3, angle: -0.5, gloss: 0.55, veins: 0.55 },
-    watch: { style: 'streak', colors: ['#EAF4F1', '#9FD8C4', '#17895C', '#0E2A33', '#12303A', '#4FD1A0', '#F2F5F3'], scale: 0.7, warp: 1.5, angle: -0.62, gloss: 0.2, veins: 0 },
-    ai: { style: 'marble', colors: ['#0B1D23', '#24444E', '#6FA3A8', '#10262D', '#B5386A', '#F2A900', '#FFF1C9'], scale: 0.74, warp: 3.6, angle: 0.8, gloss: 0.5, veins: 0.5 }
+    odoo: { style: 'marble', colors: ['#0B0A1E', '#1E1B4B', '#3B3591', '#0F0E24', '#E04A2A', '#FF6B4A', '#FFD3C7'], scale: 0.66, warp: 3.3, angle: -0.5, gloss: 0.55, veins: 0.55 },
+    watch: { style: 'streak', colors: ['#EAF4F1', '#9FD8C4', '#15803D', '#1E1B4B', '#1A1838', '#4FD1A0', '#F7F5F2'], scale: 0.7, warp: 1.5, angle: -0.62, gloss: 0.2, veins: 0 },
+    ai: { style: 'marble', colors: ['#0F0E24', '#2E2B52', '#8E89D6', '#14123A', '#B5386A', '#FF6B4A', '#FFE4DC'], scale: 0.74, warp: 3.6, angle: 0.8, gloss: 0.5, veins: 0.5 }
   };
 
   var W = 340, H = 272, HEADROOM = 54, FRONT_TOP = 74, FRONT_H = H - FRONT_TOP;
@@ -210,7 +210,7 @@
   var FRONT_PATH = 'M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 ' + (FRONT_H - 22) + 'A22 22 0 0 1 318 ' + FRONT_H + 'L22 ' + FRONT_H + 'A22 22 0 0 1 0 ' + (FRONT_H - 22) + 'Z';
 
   var CSS = [
-    '.gf-root{--gf-px:0;--gf-py:0;--gf-ease:cubic-bezier(.2,.8,.2,1);--gf-spring:cubic-bezier(.34,1.36,.5,1);--gf-hinge:0deg;--gf-lift:42px;--gf-spread:0px;--gf-fan:0deg;--gf-stack:15px;--gf-ink:#0E2A33;--gf-ink-soft:rgba(14,42,51,.6);',
+    '.gf-root{--gf-px:0;--gf-py:0;--gf-ease:cubic-bezier(.2,.8,.2,1);--gf-spring:cubic-bezier(.34,1.36,.5,1);--gf-hinge:0deg;--gf-lift:42px;--gf-spread:0px;--gf-fan:0deg;--gf-stack:15px;--gf-ink:#1E1B4B;--gf-ink-soft:rgba(30,27,75,.6);',
     'position:relative;display:inline-block;flex:none;vertical-align:top;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;isolation:isolate}',
     '.gf-root[data-tone="dark"]{--gf-ink:#f5f5f7;--gf-ink-soft:rgba(245,245,247,.62)}',
     '.gf-root:hover,.gf-root:focus-within{--gf-hinge:-11deg;--gf-lift:-34px;--gf-spread:8px;--gf-fan:1.4deg;--gf-stack:10px}',
@@ -237,17 +237,17 @@
     '.gf-root[data-tone="dark"] .gf-sheet{background:linear-gradient(180deg,#2c2c30 0%,#1c1c1f 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 .5px rgba(255,255,255,.08),0 12px 28px -8px rgba(0,0,0,.7)}',
     '.gf-root[data-open] .gf-sheet:hover,.gf-root[data-open] .gf-sheet:focus-visible{transform:translate(calc(var(--gf-jx) + var(--gf-slot) * var(--gf-spread)),calc(var(--gf-lift) + var(--gf-depth) * var(--gf-stack) * -1 - 18px)) rotate(calc(var(--gf-slot) * var(--gf-fan) * .6));',
     'box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 .5px rgba(0,0,0,.1),0 22px 40px -12px rgba(10,12,20,.42);transition-delay:0s}',
-    '.gf-sheet:focus-visible{outline:3px solid #F2A900;outline-offset:2px}',
+    '.gf-sheet:focus-visible{outline:3px solid #FF6B4A;outline-offset:2px}',
     '.gf-sheet-head{position:absolute;left:14px;right:14px;top:11px;z-index:1;display:flex;align-items:baseline;justify-content:space-between;gap:10px;white-space:nowrap}',
-    '.gf-sheet-name{overflow:hidden;text-overflow:ellipsis;font-size:calc(12.5px / var(--gf-k,1));font-weight:650;color:#0E2A33}',
-    '.gf-sheet-meta{flex:none;font-size:calc(10.5px / var(--gf-k,1));color:rgba(14,42,51,.6)}',
+    '.gf-sheet-name{overflow:hidden;text-overflow:ellipsis;font-size:calc(12.5px / var(--gf-k,1));font-weight:650;color:#1E1B4B}',
+    '.gf-sheet-meta{flex:none;font-size:calc(10.5px / var(--gf-k,1));color:rgba(30,27,75,.6)}',
     '.gf-root[data-tone="dark"] .gf-sheet-name{color:#fafafa}',
     '.gf-root[data-tone="dark"] .gf-sheet-meta{color:rgba(250,250,250,.66)}',
     '.gf-lines{position:absolute;left:14px;right:14px;top:46px;display:flex;flex-direction:column;gap:9px}',
     '.gf-lines i{display:block;height:5px;border-radius:3px;background:rgba(24,24,27,.08)}',
-    '.gf-lines i:first-child{height:9px;margin-bottom:4px;background:rgba(242,169,0,.55)}',
+    '.gf-lines i:first-child{height:9px;margin-bottom:4px;background:rgba(255,107,74,.55)}',
     '.gf-root[data-tone="dark"] .gf-lines i{background:rgba(255,255,255,.08)}',
-    '.gf-root[data-tone="dark"] .gf-lines i:first-child{background:rgba(242,169,0,.6)}',
+    '.gf-root[data-tone="dark"] .gf-lines i:first-child{background:rgba(255,107,74,.6)}',
     '.gf-front{position:absolute;left:0;top:74px;width:340px;height:198px;z-index:10;-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);transform-origin:50% 100%;transform:perspective(760px) rotateX(var(--gf-hinge));transition:transform .8s var(--gf-spring),translate 1s var(--gf-ease),opacity 1s var(--gf-ease)}',
     '.gf-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.5) 42%,rgba(252,252,252,.93) 100%)}',
     '.gf-root[data-tone="dark"] .gf-tint{background:linear-gradient(180deg,rgba(18,18,20,.18) 0%,rgba(14,14,16,.62) 46%,rgba(8,8,10,.94) 100%)}',
@@ -308,14 +308,49 @@
   var showAllBtn = document.getElementById('show-all');
   var folders = [];
 
-  function show(list, text) {
-    projects.forEach(function (p) { p.hidden = list.indexOf(p) < 0; });
-    if (count) count.textContent = text;
-    if (showAllBtn) showAllBtn.hidden = list.length === projects.length;
+  /* with JS the list stays in the HTML (for search engines and no-JS readers) but is
+     hidden; a file opens its project in a modal dialog instead */
+  function show() {
+    projects.forEach(function (p) { p.hidden = true; });
+    if (count) count.textContent = 'Open a folder, then pick a file to read the project.';
+    if (showAllBtn) showAllBtn.hidden = true;
   }
   function showAll() {
     folders.forEach(function (f) { f.setOpen(false); });
-    show(projects, 'Open a folder to pick a project. All ' + projects.length + ' are listed below.');
+    show();
+  }
+
+  var modal = document.createElement('dialog');
+  modal.className = 'pj-modal';
+  modal.setAttribute('aria-labelledby', 'pj-modal-title');
+  var modalClose = document.createElement('button');
+  modalClose.type = 'button'; modalClose.className = 'pj-close'; modalClose.setAttribute('aria-label', 'Close project');
+  modalClose.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  var modalTag = document.createElement('p'); modalTag.className = 'pj-tag';
+  var modalBody = document.createElement('div'); modalBody.className = 'pj-body';
+  modal.appendChild(modalClose); modal.appendChild(modalTag); modal.appendChild(modalBody);
+  /* inside the projects band so the page's .band styles (chips, flow) still apply */
+  ((projects[0] && projects[0].closest('.band')) || document.body).appendChild(modal);
+  var returnFocus = null;
+  function closeProject() { if (modal.open) modal.close(); }
+  modalClose.addEventListener('click', closeProject);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeProject(); });
+  modal.addEventListener('close', function () {
+    document.documentElement.classList.remove('pj-lock');
+    modalBody.textContent = '';
+    if (returnFocus) { returnFocus.focus({ preventScroll: true }); returnFocus = null; }
+  });
+  function openProject(p, from) {
+    var clone = p.cloneNode(true);
+    clone.hidden = false; clone.removeAttribute('tabindex'); clone.removeAttribute('id');
+    clone.querySelectorAll('[id]').forEach(function (n) { n.removeAttribute('id'); });
+    var h = clone.querySelector('h3'); if (h) h.id = 'pj-modal-title';
+    modalTag.textContent = (p.getAttribute('data-folder') || 'Project') + (p.getAttribute('data-meta') ? ' · ' + p.getAttribute('data-meta') : '');
+    modalBody.textContent = ''; modalBody.appendChild(clone);
+    returnFocus = from || null;
+    document.documentElement.classList.add('pj-lock');
+    if (modal.showModal) modal.showModal(); else modal.setAttribute('open', '');
+    modalBody.scrollTop = 0; modalClose.focus();
   }
 
   function buildFolder(group, index, width) {
@@ -382,11 +417,7 @@
       head.appendChild(el('span', 'gf-sheet-name', name));
       if (meta) head.appendChild(el('span', 'gf-sheet-meta', meta));
       sheet.appendChild(lines); sheet.appendChild(head);
-      sheet.addEventListener('click', function () {
-        show([p], 'Showing 1 of ' + projects.length + ': ' + p.querySelector('h3').textContent);
-        p.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
-        p.focus({ preventScroll: true });
-      });
+      sheet.addEventListener('click', function () { openProject(p, sheet); });
       slot.appendChild(sheet); files.appendChild(slot);
     });
 
@@ -406,10 +437,9 @@
       if (open) { showAll(); return; }
       folders.forEach(function (f) { if (f.setOpen !== setOpen) f.setOpen(false); });
       setOpen(true);
-      show(group.items, 'Showing ' + n + ' of ' + projects.length + ': ' + group.label + '. Pick a file to read one.');
     });
     rootEl.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && open) { showAll(); hit.focus(); }
+      if (e.key === 'Escape' && open && !modal.open) { showAll(); hit.focus(); }
     });
 
     /* light and parallax follow the cursor */

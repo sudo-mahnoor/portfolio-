@@ -24,13 +24,13 @@
   };
 
   var CSS = [
-    '.nimbus-nav{--n-tint:rgba(255,255,255,.42);--n-fg:#0E2A33;--n-fg-soft:rgba(14,42,51,.64);--n-rim:rgba(255,255,255,.8);',
+    '.nimbus-nav{--n-tint:rgba(255,255,255,.42);--n-fg:#1E1B4B;--n-fg-soft:rgba(30,27,75,.64);--n-rim:rgba(255,255,255,.8);',
     'position:fixed;top:.55rem;left:50%;transform:translateX(-50%);z-index:30;display:inline-flex;align-items:center;gap:2px;padding:6px;border-radius:999px;isolation:isolate;',
     '-webkit-font-smoothing:antialiased;user-select:none;-webkit-tap-highlight-color:transparent}',
     '.nimbus-nav[data-tone="dark"]{--n-tint:rgba(10,18,40,.3);--n-fg:#F1F7FF;--n-fg-soft:rgba(241,247,255,.68);--n-rim:rgba(255,255,255,.34)}',
     '.nimbus-glass{position:absolute;inset:0;border-radius:inherit;z-index:-2;overflow:hidden;background:var(--n-tint);',
     '-webkit-backdrop-filter:blur(10px) saturate(1.2) brightness(1.06);backdrop-filter:blur(10px) saturate(1.2) brightness(1.06);',
-    'box-shadow:inset 0 1px 1px var(--n-rim),inset 0 0 0 1px rgba(255,255,255,.2),0 12px 32px -14px rgba(0,40,60,.55),0 2px 6px rgba(0,40,60,.14)}',
+    'box-shadow:inset 0 1px 1px var(--n-rim),inset 0 0 0 1px rgba(255,255,255,.2),0 12px 32px -14px rgba(30,20,70,.55),0 2px 6px rgba(30,20,70,.14)}',
     '.nimbus-water{position:absolute;left:' + (-PAD) + 'px;top:' + (-PAD) + 'px;z-index:-1;pointer-events:none}',
     '.nimbus-nav[data-gl="off"] .nimbus-water{display:none}',
     '.nimbus-drop{display:none;position:absolute;top:6px;bottom:6px;left:0;border-radius:999px;z-index:-1;pointer-events:none;will-change:transform,width;',
@@ -40,7 +40,7 @@
     '.nimbus-item{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 15px;border:0;border-radius:999px;background:none;color:var(--n-fg-soft);',
     'font-weight:600;font-size:14px;line-height:1;text-decoration:none;cursor:pointer;transition:color .25s;white-space:nowrap}',
     '.nimbus-item:hover,.nimbus-item[aria-current="true"]{color:var(--n-fg)}',
-    '.nimbus-item:focus-visible{outline:2px solid #F2A900;outline-offset:2px}',
+    '.nimbus-item:focus-visible{outline:2px solid #FF6B4A;outline-offset:2px}',
     '.nv-ico{position:relative;display:inline-flex;flex:none}',
     '.nv-ico svg{transition:transform .45s cubic-bezier(.3,1.6,.5,1)}',
     '.nimbus-item[aria-current="true"] .nv-ico svg{transform:translateY(-1px) scale(1.08)}',
@@ -52,7 +52,7 @@
     '.nv-ico[data-fx="glow"] svg{animation:nvHop .8s cubic-bezier(.3,1.4,.5,1) both;transform-origin:50% 100%}',
     '@keyframes nvHop{0%{transform:none}30%{transform:translateY(-5px) scale(1.04,.96)}55%{transform:translateY(0) scale(1.12,.88)}75%{transform:translateY(-2px) scale(.98,1.04)}100%{transform:translateY(-1px) scale(1.08)}}',
     '.nv-ico[data-fx="glow"] .nv-door{animation:nvDoor 1.3s ease both}',
-    '@keyframes nvDoor{0%{fill:transparent}30%{fill:#FFE9A8}100%{fill:rgba(242,169,0,.55)}}',
+    '@keyframes nvDoor{0%{fill:transparent}30%{fill:#FFD3C7}100%{fill:rgba(255,107,74,.55)}}',
     '.nv-ico[data-fx="wave"] svg{animation:nvWave .9s ease-in-out both;transform-origin:50% 92%}',
     '@keyframes nvWave{0%{transform:none}20%{transform:rotate(-15deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}100%{transform:translateY(-1px) scale(1.08)}}',
     '@media (max-width:1040px){.nimbus-item{padding:0 13px}.nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}',
