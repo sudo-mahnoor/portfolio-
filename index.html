@@ -156,7 +156,66 @@ button{font:inherit;color:inherit}
 .skip:focus{left:1rem;top:1rem;background:var(--ink);color:var(--paper);padding:.5rem .75rem;z-index:20}
 
 /* header */
-.top{border-bottom:1px solid var(--line)}
+.top{position:absolute;top:0;left:0;right:0;z-index:5;color:#E6EFEC}
+.top .theme{border-color:rgba(255,255,255,.3)}
+.top .theme:hover{border-color:#fff}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.intro-band{padding:4rem 0}
+
+/* mosaic hero */
+.mz{position:relative;isolation:isolate;container-type:inline-size;min-height:max(100svh,600px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(20px,4svh,40px);padding:110px 1.25rem 104px;background:#061215;color:#F2F5F3;overflow:hidden;--pxs:clamp(4px,calc(.85vw + 2px),14px)}
+.mz-sky{position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 50% 55%,#1B3A40,transparent 70%),radial-gradient(80% 60% at 80% 120%,#3A2A08,transparent 70%),#061215}
+.mz-sky canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s ease}
+.mz[data-sky="webgl"] .mz-sky canvas{opacity:1}
+.mz .mz-h1{margin:0;display:flex;flex-direction:column;align-items:center;color:#fff;font:inherit;letter-spacing:normal;filter:drop-shadow(0 4px 22px rgba(0,0,0,.55));cursor:default}
+.js .h1-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.no-js .px-line{display:none}
+.no-js .mz .mz-h1{font:800 clamp(3rem,11vw,8rem)/.9 var(--display);font-stretch:75%;text-align:center}
+.px-svg{display:block;height:auto;overflow:visible;fill:currentColor;width:min(calc(var(--pxs) * var(--w)),calc(min(100cqi,1100px) * var(--w) / var(--wmax)))}
+.px-svg .px{transform-box:fill-box;transform-origin:50% 50%;transition:fill .7s ease,translate .9s cubic-bezier(.34,1.56,.64,1)}
+.px-svg .px.is-off{transition:fill .7s ease,translate .35s cubic-bezier(.22,1,.36,1)}
+.px-svg .px.is-lit{fill:var(--marigold)}
+.px-svg .px-g{transform-box:fill-box;transform-origin:50% 50%}
+.mz-role{margin:0;font:600 clamp(1.125rem,2.4vw,1.5rem)/1.3 var(--display);color:#D4E4E0;text-align:center;text-shadow:0 1px 12px rgba(0,0,0,.7)}
+.mz-composer-wrap{width:min(720px,100%);display:flex;flex-direction:column;align-items:center;gap:12px;margin:0}
+.no-js .mz-composer-wrap{display:none}
+.mz-role,.mz-composer-wrap,.mz-cue{transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1),filter 1.1s cubic-bezier(.16,1,.3,1)}
+.mz-intro .mz-role,.mz-intro .mz-composer-wrap,.mz-intro .mz-cue{opacity:0;transform:translateY(40px) scale(.96);filter:blur(10px)}
+.mz-settled .mz-composer-wrap,.mz-settled .mz-cue{transition:none}
+.mz-composer{position:relative;width:100%;border-radius:26px;padding:22px 18px 16px 24px;background:rgba(18,34,38,.62);-webkit-backdrop-filter:blur(26px) saturate(150%);backdrop-filter:blur(26px) saturate(150%);box-shadow:inset 0 0 0 1px rgba(214,240,235,.14),inset 0 1px 0 rgba(255,255,255,.08),0 24px 70px rgba(0,0,0,.5);transition:box-shadow .35s ease}
+.mz-composer:focus-within{box-shadow:inset 0 0 0 1px rgba(242,169,0,.5),inset 0 1px 0 rgba(255,255,255,.1),0 0 0 6px rgba(242,169,0,.06),0 24px 70px rgba(0,0,0,.55)}
+.mz-composer[data-nudge]{animation:mz-nudge .45s cubic-bezier(.36,.07,.19,.97)}
+.mz-field{position:relative}
+.mz-input{display:block;width:100%;min-height:52px;max-height:180px;resize:none;border:0;outline:0;background:transparent;color:#F2F5F3;font:inherit;font-size:16px;line-height:1.55;padding:0}
+.mz-input:focus-visible{outline:none}
+.mz-ph{position:absolute;left:0;top:0;right:0;font-size:16px;line-height:1.55;color:#8FA9AC;pointer-events:none;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.mz-field[data-filled] .mz-ph{display:none}
+.mz-caret{display:inline-block;width:2px;height:1.1em;margin-left:2px;vertical-align:-3px;background:var(--marigold);animation:mz-blink 1s steps(1) infinite}
+.mz-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}
+.mz-chips{display:flex;flex-wrap:wrap;gap:6px}
+.mz-chip{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 11px 0 9px;border:0;border-radius:10px;font-size:13px;font-weight:600;color:#A9BDBD;background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.04));box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);cursor:pointer;transition:color .2s,background .2s,box-shadow .2s,transform .2s}
+.mz-chip svg{width:12px;height:12px;fill:currentColor;display:block}
+.mz-chip:hover{color:#E6EFEC;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.07))}
+.mz-chip[aria-checked="true"]{color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.08));box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.mz-chip[aria-checked="true"] svg{fill:var(--marigold)}
+.mz-chip:active{transform:scale(.96)}
+.mz-send{flex:none;width:40px;height:40px;border:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;background:linear-gradient(160deg,#FFE9A8,#F2A900 48%,#C98A00);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 4px 16px rgba(242,169,0,.42);transition:transform .3s cubic-bezier(.16,1,.3,1),filter .2s}
+.mz-send svg{width:14px;height:14px;fill:#0E2A33;display:block}
+.mz-send[data-ready="false"]{filter:saturate(.35) brightness(.8)}
+.mz-send[data-ready="true"]{animation:mz-ready 2.4s ease-in-out infinite}
+.mz-send:hover{transform:scale(1.07)}
+.mz-send:active{transform:scale(.94)}
+.mz-hint{margin:0;font-size:12.5px;color:#A9BDBD;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.mz-hint kbd{font:inherit;font-size:11.5px;padding:1px 6px;border-radius:5px;background:rgba(10,20,24,.7);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);color:#E6EFEC}
+.mz-status{margin:0;font-size:13.5px;color:#F2C14E;text-align:center;min-height:0}
+.mz-status:empty{display:none}
+.mz-cue{position:absolute;left:50%;bottom:22px;width:40px;height:40px;margin-left:-20px;border-radius:12px;display:grid;place-items:center;color:rgba(255,255,255,.75)}
+.mz-cue svg{width:14px;height:14px;fill:currentColor;display:block;animation:mz-bob 2s cubic-bezier(.45,0,.55,1) infinite}
+.mz-cue:hover{color:#fff;background:rgba(255,255,255,.06)}
+@keyframes mz-nudge{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}
+@keyframes mz-blink{50%{opacity:0}}
+@keyframes mz-ready{50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 4px 26px rgba(242,169,0,.42),0 0 0 6px rgba(255,255,255,.04)}}
+@keyframes mz-bob{50%{transform:translateY(5px)}}
 .top .wrap{display:flex;align-items:center;gap:1rem;min-height:3.5rem}
 .brand{font:700 1.125rem/1 var(--display);text-decoration:none;margin-right:auto}
 .nav{display:flex;gap:1.25rem;font-size:.9375rem}
@@ -297,12 +356,20 @@ li[data-state="passed"] .dot::after{content:"\2713";font-weight:700}
 footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted);font-size:.9375rem}
 
 @media (max-width:860px){
+  .mz-cue{bottom:90px}
+  .mz{padding-bottom:150px}
   .hero-grid{grid-template-columns:minmax(0,1fr);gap:2.25rem}
   .band-grid{grid-template-columns:minmax(0,1fr)}
   .nav{display:none}
   body{padding-bottom:4.5rem}
   .project{grid-template-columns:minmax(0,1fr);padding:1.25rem 1.25rem}
   .layer{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .mz{padding-top:90px;gap:22px}
+  .mz-composer{padding:18px 14px 14px 18px;border-radius:22px}
+  .mz-hint{display:none}
+  .mz-row{align-items:flex-end}
 }
 @media (max-width:560px){
   .hero{padding-top:2rem;padding-bottom:3rem}
@@ -316,6 +383,7 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   li[data-state="running"] .dot{animation:none}
+  .mz-caret,.mz-send[data-ready="true"],.mz-cue svg,.mz-composer[data-nudge]{animation:none}
   .flow li::after{animation:none;background:var(--line)}
   .layer{transition:none}
   .layer:hover{transform:none}
@@ -342,11 +410,36 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
 
 <main id="main">
 
-  <div class="hero wrap" id="top">
-    <h1>Mahnoor Saeed</h1>
-    <p class="role">DevOps Engineer in Lahore, Pakistan</p>
+  <div class="mz" id="top">
+    <div class="mz-sky" aria-hidden="true"></div>
+    <h1 class="mz-h1"><span class="h1-text">Mahnoor Saeed</span><span class="px-line" data-text="Mahnoor Saeed"></span></h1>
+    <p class="mz-role">DevOps Engineer in Lahore, Pakistan</p>
+    <form class="mz-composer-wrap" id="ask" data-email="mahnoor.saeeddevops@gmail.com" data-prompts="Move our Odoo from Docker to a service-based setup with no downtime...|Set up Prometheus and Grafana alerts for our production servers...|Build a GitHub Actions pipeline that deploys behind Nginx with SSL...|Plan backups and a tested restore for our PostgreSQL database..." novalidate>
+      <div class="mz-composer">
+        <div class="mz-field">
+          <label class="sr-only" for="ask-text">Describe your project</label>
+          <textarea class="mz-input" id="ask-text" rows="2"></textarea>
+          <div class="mz-ph" aria-hidden="true"><span id="ask-ph"></span><i class="mz-caret"></i></div>
+        </div>
+        <div class="mz-row">
+          <div class="mz-chips" role="radiogroup" aria-label="Project area">
+            <button class="mz-chip" type="button" role="radio" aria-checked="true" data-icon="window" data-value="Odoo and PostgreSQL">Odoo</button>
+            <button class="mz-chip" type="button" role="radio" aria-checked="false" data-icon="bars" data-value="Monitoring">Monitoring</button>
+            <button class="mz-chip" type="button" role="radio" aria-checked="false" data-icon="bolt" data-value="CI/CD">CI/CD</button>
+            <button class="mz-chip" type="button" role="radio" aria-checked="false" data-icon="rocket" data-value="Cloud">Cloud</button>
+            <button class="mz-chip" type="button" role="radio" aria-checked="false" data-icon="chat" data-value="Mail server">Mail</button>
+          </div>
+          <button class="mz-send" type="submit" aria-label="Send by email" data-ready="false" data-icon="arrow"></button>
+        </div>
+      </div>
+      <p class="mz-hint"><kbd>Enter</kbd> sends it to Mahnoor by email, <kbd>Shift</kbd> + <kbd>Enter</kbd> adds a line</p>
+      <p class="mz-status" id="ask-status" role="status"></p>
+    </form>
+    <a class="mz-cue" href="#intro" aria-label="Scroll to the introduction" data-icon="down"></a>
+  </div>
 
-    <div class="hero-grid">
+  <section class="intro-band" id="intro" aria-label="Introduction">
+    <div class="wrap hero-grid">
       <div>
         <p class="lede"><strong>Mahnoor Saeed is a DevOps engineer based in Lahore, Pakistan, working at DevFusion Tech.</strong> I containerize applications, automate CI/CD pipelines, harden Linux servers, and run self-hosted Odoo ERP on PostgreSQL.</p>
         <p class="tagline">I make deployments boring, on purpose.</p>
@@ -395,7 +488,7 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
         </div>
       </section>
     </div>
-  </div>
+  </section>
 
   <section class="band band-wide" id="projects">
     <div class="wrap">
@@ -735,7 +828,11 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
   });
   select(0);
   runBtn.addEventListener('click',run);
-  timer=setTimeout(run,700);
+  var pipeEl=document.querySelector('.pipe');
+  if('IntersectionObserver' in window&&pipeEl){
+    var pio=new IntersectionObserver(function(es){ if(es.some(function(e){return e.isIntersecting;})){ pio.disconnect(); timer=setTimeout(run,300); } },{threshold:.35});
+    pio.observe(pipeEl);
+  } else { timer=setTimeout(run,700); }
 
   /* copy email */
   var copy=document.getElementById('copy');
@@ -748,6 +845,7 @@ footer{border-top:1px solid var(--line);padding:1.75rem 0 3rem;color:var(--muted
 
 })();
 </script>
+<script src="/assets/mosaic-hero.js" defer></script>
 <script src="/assets/liquid-nav.js" defer></script>
 <script src="/assets/glass-folders.js" defer></script>
 
