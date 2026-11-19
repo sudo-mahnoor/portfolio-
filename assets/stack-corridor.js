@@ -44,42 +44,52 @@
   section.insertBefore(over, wrap);
   section.classList.add('has-sc');
 
-  /* place tiles: left / right wall, top / bottom row, evenly spread along the depth */
-  var tiles = [];
-  items.forEach(function (it, i) {
-    var t = el('div', 'sc-tile');
-    t.appendChild(el('span', 'sc-num', (it.n < 10 ? '0' : '') + it.n + ' · ' + it.group));
-    t.appendChild(el('span', 'sc-name', it.name));
-    scene.appendChild(t);
-    tiles.push({ el: t, side: i % 2 ? 1 : -1, row: (i >> 1) % 2, slot: i });
-  });
+  /* two straight walls; on each wall the tiles stand flat and are piled in a tidy grid:
+     ROWS high, columns running down the corridor. The tool list repeats until the walls
+     are long enough to loop without a gap. */
+  var ROWS = 3, GAP = 14, SPEED = 90; /* px per second */
+  var tiles = [], span = 0, NEAR = 0, X = 0, TW = 250, TH = 124;
 
-  var DEPTH, NEAR, X, ROWY, SPEED = 95; /* px per second */
-  function measure() {
-    var w = root.clientWidth, h = root.clientHeight;
-    var small = w < 640;
-    DEPTH = small ? 2600 : 3400;
-    NEAR = small ? 420 : 560;
-    X = Math.max(small ? 150 : 300, w * (small ? 0.36 : 0.38));
-    ROWY = small ? [-h * 0.17, h * 0.17] : [-h * 0.19, h * 0.19];
+  function build() {
+    var w = root.clientWidth, h = root.clientHeight, small = w < 640;
+    scene.textContent = ''; tiles = [];
+    var probe = el('div', 'sc-tile'); scene.appendChild(probe);
+    TW = probe.offsetWidth || TW; TH = probe.offsetHeight || TH; scene.removeChild(probe);
+    var step = TW + GAP;                                  /* one column along the depth */
+    var cols = Math.ceil((small ? 3000 : 4200) / step);
+    span = cols * step;
+    NEAR = small ? 380 : 520;
+    X = Math.max(small ? 120 : 280, w * (small ? 0.33 : 0.34));
     view.style.perspective = (small ? 520 : 760) + 'px';
+    var k = 0;
+    for (var c = 0; c < cols; c++) {
+      for (var side = -1; side <= 1; side += 2) {
+        for (var r = 0; r < ROWS; r++) {
+          var it = items[k++ % items.length];
+          var t = el('div', 'sc-tile');
+          t.appendChild(el('span', 'sc-num', (it.n < 10 ? '0' : '') + it.n + ' · ' + it.group));
+          t.appendChild(el('span', 'sc-name', it.name));
+          scene.appendChild(t);
+          tiles.push({ el: t, side: side, y: (r - (ROWS - 1) / 2) * (TH + GAP), base: c * step });
+        }
+      }
+    }
   }
 
   var offset = 0;
   function place() {
-    var n = tiles.length;
+    var far = span - NEAR;
     tiles.forEach(function (t) {
-      /* z runs from -DEPTH (far) to NEAR (passing the viewer), then wraps */
-      var span = DEPTH + NEAR;
-      var z = (t.slot * (span / n) + offset) % span - DEPTH;
-      var far = (z + DEPTH) / span;                 /* 0 far .. 1 near */
-      var fade = Math.min(1, far * 3.2) * Math.min(1, (NEAR - z) / 260);
+      /* z runs from -far (deep in the corridor) to NEAR (passing the viewer), then wraps */
+      var z = (t.base + offset) % span - far;
+      var depth = (z + far) / span;                       /* 0 far .. 1 near */
+      var fade = Math.min(1, depth * 3) * Math.min(1, (NEAR - z) / 240);
       t.el.style.opacity = fade.toFixed(3);
-      t.el.style.transform = 'translate3d(' + (t.side * X) + 'px,' + ROWY[t.row] + 'px,' + z.toFixed(1) + 'px) rotateY(' + (t.side * -72) + 'deg)';
+      t.el.style.transform = 'translate3d(' + (t.side * X) + 'px,' + t.y.toFixed(1) + 'px,' + z.toFixed(1) + 'px) rotateY(' + (t.side * -90) + 'deg)';
     });
   }
 
-  measure(); place();
+  build(); place();
 
   var running = false, last = 0, raf = 0, hover = false, speedNow = SPEED;
   function frame(ts) {
@@ -103,5 +113,5 @@
   section.addEventListener('pointerleave', function () { hover = false; });
 
   var rt = 0;
-  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { measure(); place(); }, 150); });
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { build(); place(); }, 150); });
 })();
